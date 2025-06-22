@@ -1,0 +1,22 @@
+{
+    "name": "a3naumov/php-sql-db-manager",
+    "description": "php-sql-db-manager",
+    "type": "project",
+    "license": "MIT",
+    "require": {
+        "php": "^8.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "Framework\\": "framework/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Artem Naumov",
+            "email": "naumovartem272@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev"
+}
