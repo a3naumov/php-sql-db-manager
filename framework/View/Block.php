@@ -16,17 +16,19 @@ class Block implements BlockInterface
     ) {
     }
 
-    public function render(): string
+    public function getTemplate(): string
     {
-        $data = $this->data;
-        $childrenContent = array_map(static fn(BlockInterface $child) => $child->render(), $this->children);
-        $data['children'] = implode('', $childrenContent);
+        return $this->template;
+    }
 
-        if ($this->template) {
-            return $this->renderTemplate($this->template, $data);
-        }
+    public function getData(): array
+    {
+        return $this->data;
+    }
 
-        return '';
+    public function getChildren(): array
+    {
+        return $this->children;
     }
 
     public function addChild(BlockInterface $child): static
@@ -34,13 +36,5 @@ class Block implements BlockInterface
         $this->children[] = $child;
 
         return $this;
-    }
-
-    private function renderTemplate(string $template, array $data = []): string
-    {
-        extract($data);
-        ob_start();
-        require_once $template;
-        return ob_get_clean();
     }
 }

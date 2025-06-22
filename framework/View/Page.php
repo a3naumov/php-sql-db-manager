@@ -13,6 +13,8 @@ class Page implements PageInterface, ResultInterface
      */
     private array $blocks;
 
+    private BlockRendererInterface $blockRenderer;
+
     public function __construct(
         protected string $title,
         BlockInterface... $blocks,
@@ -22,7 +24,12 @@ class Page implements PageInterface, ResultInterface
 
     public function render(): string
     {
-        return implode('', array_map(static fn (BlockInterface $block) => $block->render(), $this->blocks));
+        $blockRenderer = $this->getBlockRenderer();
+
+        return implode('', array_map(
+            static fn (BlockInterface $block) => $blockRenderer->render($block),
+            $this->blocks,
+        ));
     }
 
     public function addBlock(BlockInterface $block): static
@@ -35,5 +42,14 @@ class Page implements PageInterface, ResultInterface
     public function getContent(): string
     {
         return $this->render();
+    }
+
+    private function getBlockRenderer(): BlockRendererInterface
+    {
+        if (!isset($this->blockRenderer)) {
+            $this->blockRenderer = new BlockRenderer();
+        }
+
+        return $this->blockRenderer;
     }
 }

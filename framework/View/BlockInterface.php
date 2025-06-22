@@ -6,7 +6,14 @@ namespace Framework\View;
 
 interface BlockInterface
 {
-    public function render(): string;
+    public function getTemplate(): string;
+
+    public function getData(): array;
+
+    /**
+     * @return BlockInterface[]
+     */
+    public function getChildren(): array;
 
     public function addChild(BlockInterface $child): static;
 }
