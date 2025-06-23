@@ -1,0 +1,14 @@
+#!/usr/bin/env php
+<?php
+
+$arguments = isset($argv) && is_array($argv) ? array_values($argv) : [];
+array_shift($arguments);
+
+if (!$arguments) {
+    echo 'Define a command to run.' . PHP_EOL;
+    exit(1);
+}
+
+$command = array_shift($arguments);
+
+exit();

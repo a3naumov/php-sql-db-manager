@@ -7,7 +7,7 @@ namespace Framework\Core\Config;
 class ConfigProvider implements ConfigProviderInterface
 {
     public function __construct(
-        private string $configDir,
+//        private string $configDir,
     ) {
     }
 

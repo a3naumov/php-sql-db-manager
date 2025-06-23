@@ -4,11 +4,17 @@ declare(strict_types=1);
 
 namespace App\Web\Controller;
 
+use Framework\Core\Config\ConfigProvider;
 use Framework\Core\ResultInterface;
 
 class HomepageController
 {
     private string $viewsDirectory = __DIR__ . '/../../../views';
+
+    public function __construct(
+        private ConfigProvider $configProvider,
+    ) {
+    }
 
     public function index(): ResultInterface
     {
