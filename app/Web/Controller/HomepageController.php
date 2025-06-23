@@ -11,11 +11,6 @@ class HomepageController
 {
     private string $viewsDirectory = __DIR__ . '/../../../views';
 
-    public function __construct(
-        private ConfigProvider $configProvider,
-    ) {
-    }
-
     public function index(): ResultInterface
     {
         $blockFactory = new \Framework\View\BlockFactory();
