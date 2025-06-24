@@ -3,4 +3,7 @@
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-exit((new \Framework\Cli\DiCompileCommand())->execute());
+$result = (new \Framework\Cli\DiCompileCommand())->execute();
+exec('composer dump-autoload');
+
+exit($result);

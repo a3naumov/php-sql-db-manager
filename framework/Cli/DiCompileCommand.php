@@ -6,10 +6,24 @@ namespace Framework\Cli;
 
 use Framework\Core\Cli\CommandInterface;
 use Framework\Core\Di\Attribute\Tag;
+use Framework\Core\Di\BuilderInterface;
+use Framework\Core\Di\BuilderProvider;
 
 #[Tag(id: CommandInterface::class)]
 class DiCompileCommand implements CommandInterface
 {
+    private BuilderInterface $diBuilder;
+
+    public function __construct(
+        ?BuilderInterface $diBuilder = null,
+    ) {
+        if (null === $diBuilder) {
+            $diBuilder = (new BuilderProvider())->getBuilder();
+        }
+
+        $this->diBuilder = $diBuilder;
+    }
+
     public function getName(): string
     {
         return 'di-compile';
@@ -17,39 +31,7 @@ class DiCompileCommand implements CommandInterface
 
     public function execute(): int
     {
-        $classes = [
-            \App\Web\Controller\HomepageController::class,
-            \Framework\Config\ConfigProvider::class,
-        ];
-
-        $map = [];
-
-        foreach  ($classes as $class) {
-            $reflection = new \ReflectionClass($class);
-            $constructor = $reflection->getConstructor();
-
-            if (!$constructor) {
-                $map[$class] = [];
-                continue;
-            }
-
-            $dependencies = [];
-            foreach($constructor->getParameters() as $parameter) {
-                $type = $parameter->getType();
-                if ($type && !$type->isBuiltin()) {
-                    $dependencies[] = $type->getName();
-                } else {
-                    $dependencies[] = 'mixed';
-                }
-            }
-
-            $map[$class] = $dependencies;
-        }
-
-        file_put_contents(
-            __DIR__ . '/../../var/di-map.php',
-            '<?php return ' . var_export($map, true) . ';'
-        );
+        $this->diBuilder->build();
 
         return self::EXIT_SUCCESS;
     }

@@ -8,5 +8,5 @@ use Framework\Core\Application\ApplicationInterface;
 
 interface KernelInterface
 {
-    public function execute(ApplicationInterface $application): int;
+    public function execute(ApplicationInterface $application): never;
 }

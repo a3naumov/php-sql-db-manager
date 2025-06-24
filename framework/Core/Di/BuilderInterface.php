@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Framework\Core\Di;
 
-interface DependenciesManagerInterface
+interface BuilderInterface
 {
+    public function build(): void;
 }

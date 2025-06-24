@@ -1,3 +1,3 @@
 <?php
 
-return new \App\TempApplication();
+return (new \App\TempApplicationInterceptor())();
