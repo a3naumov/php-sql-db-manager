@@ -16,24 +16,29 @@ class Container implements ContainerInterface
         $this->definitions = $definitions;
     }
 
-    public function get(string $class): object
+    public function get(string $id): object
     {
-        if (isset($this->instances[$class])) {
-            return $this->instances[$class];
+        if (isset($this->instances[$id])) {
+            return $this->instances[$id];
         }
 
-        if (!isset($this->definitions[$class])) {
-            throw new \Exception("No definition found for class: $class");
+        if (!isset($this->definitions[$id])) {
+            throw new \Exception("No definition found for class: $id");
         }
 
         $dependencies = [];
-        foreach ($this->definitions[$class] as $dep) {
+        foreach ($this->definitions[$id] as $dep) {
             $dependencies[] = $this->get($dep);
         }
 
-        $instance = new $class(...$dependencies);
-        $this->instances[$class] = $instance;
+        $instance = new $id(...$dependencies);
+        $this->instances[$id] = $instance;
 
         return $instance;
+    }
+
+    public function has(string $id): bool
+    {
+        return isset($this->definitions[$id]) || isset($this->instances[$id]);
     }
 }

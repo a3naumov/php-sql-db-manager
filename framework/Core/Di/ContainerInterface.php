@@ -4,12 +4,8 @@ declare(strict_types=1);
 
 namespace Framework\Core\Di;
 
-use Framework\Core\Di\Exception\NoDefinitionFoundException;
+use Psr\Container\ContainerInterface as PsrContainerInterface;
 
-interface ContainerInterface
+interface ContainerInterface extends PsrContainerInterface
 {
-    /**
-     * @throws NoDefinitionFoundException
-     */
-    public function get(string $class): object;
 }
