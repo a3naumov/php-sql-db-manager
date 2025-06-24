@@ -5,7 +5,9 @@ declare(strict_types=1);
 namespace Framework\Cli;
 
 use Framework\Core\Cli\CommandInterface;
+use Framework\Core\Di\Attribute\Tag;
 
+#[Tag(id: CommandInterface::class)]
 class DiCompileCommand implements CommandInterface
 {
     public function getName(): string

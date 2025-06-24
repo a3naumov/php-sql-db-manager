@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace Framework\Di;
 
+use Framework\Core\Di\Attribute\Bind;
 use Framework\Core\Di\ContainerInterface;
 
+#[Bind(id: ContainerInterface::class)]
 class Container implements ContainerInterface
 {
     private array $definitions;
