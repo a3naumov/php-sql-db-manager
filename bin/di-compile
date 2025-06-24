@@ -3,4 +3,4 @@
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-exit((new \Framework\Di\Cli\DiCompileCommand())->execute());
+exit((new \Framework\Cli\DiCompileCommand())->execute());

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Framework\Di\Exception;
+namespace Framework\Core\Di\Exception;
 
 class NoDefinitionFoundException extends \Exception
 {

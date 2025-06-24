@@ -2,7 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Framework\Core\Config;
+namespace Framework\Config;
+
+use Framework\Core\Config\ConfigProviderInterface;
 
 class ConfigProvider implements ConfigProviderInterface
 {

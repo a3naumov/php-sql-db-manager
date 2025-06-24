@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Framework\Di\Cli;
+namespace Framework\Cli;
 
 use Framework\Core\Cli\CommandInterface;
 
@@ -17,7 +17,7 @@ class DiCompileCommand implements CommandInterface
     {
         $classes = [
             \App\Web\Controller\HomepageController::class,
-            \Framework\Core\Config\ConfigProvider::class,
+            \Framework\Config\ConfigProvider::class,
         ];
 
         $map = [];
@@ -45,7 +45,7 @@ class DiCompileCommand implements CommandInterface
         }
 
         file_put_contents(
-            __DIR__ . '/../../../var/di-map.php',
+            __DIR__ . '/../../var/di-map.php',
             '<?php return ' . var_export($map, true) . ';'
         );
 

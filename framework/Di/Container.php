@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Framework\Di;
 
+use Framework\Core\Di\ContainerInterface;
+
 class Container implements ContainerInterface
 {
     private array $definitions;

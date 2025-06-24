@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Web\Controller;
 
-use Framework\Core\Config\ConfigProvider;
 use Framework\Core\ResultInterface;
 
 class HomepageController

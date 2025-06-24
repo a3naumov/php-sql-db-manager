@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Framework\View;
 
+use Framework\Core\View\BlockInterface;
+use Framework\Core\View\BlockRendererInterface;
+
 class BlockRenderer implements BlockRendererInterface
 {
     public function render(BlockInterface $block): string

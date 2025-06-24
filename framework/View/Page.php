@@ -5,6 +5,9 @@ declare(strict_types=1);
 namespace Framework\View;
 
 use Framework\Core\ResultInterface;
+use Framework\Core\View\BlockInterface;
+use Framework\Core\View\BlockRendererInterface;
+use Framework\Core\View\PageInterface;
 
 class Page implements PageInterface, ResultInterface
 {

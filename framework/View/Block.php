@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Framework\View;
 
+use Framework\Core\View\BlockInterface;
+
 class Block implements BlockInterface
 {
     /**

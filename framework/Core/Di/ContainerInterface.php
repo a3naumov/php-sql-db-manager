@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Framework\Di;
+namespace Framework\Core\Di;
 
-use Framework\Di\Exception\NoDefinitionFoundException;
+use Framework\Core\Di\Exception\NoDefinitionFoundException;
 
 interface ContainerInterface
 {
